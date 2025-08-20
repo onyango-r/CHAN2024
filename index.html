@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Ticket Download</title>
+    <title>Football Match Ticket Download</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -128,9 +120,9 @@
             color: #1a2a6c;
         }
         
-        .flag-angola {
-            background: linear-gradient(to bottom, #cc0000 50%, #000000 50%);
-            color: #f7d618;
+        .flag-kenya {
+            background: linear-gradient(to bottom, #000000 33%, #ff0000 33%, #ff0000 66%, #006600 66%);
+            color: #ffffff;
         }
         
         .vs {
@@ -586,26 +578,26 @@
     <div class="container">
         <div class="header">
             <h1 class="confirmation-title">Tickets Confirmed!</h1>
-            <p class="subtitle">You're all set for Kenya Vs Morocco</p>
-            <p class="email-notice">A confirmation has been sent </p>
+            <p class="subtitle">You're all set for Zambia Vs Kenya</p>
+            <p class="email-notice">A confirmation has been sent</p>
         </div>
         
         <div class="event-info">
             <span class="sports-label">SPORTS</span>
-            <h2 class="match-title">Kenya Vs Morocco</h2>
+            <h2 class="match-title">Zambia Vs Kenya</h2>
             
             <div class="flags">
-                <div class="flag flag-zambia">KEN</div>
+                <div class="flag flag-zambia">ZAM</div>
                 <div class="vs">VS</div>
-                <div class="flag flag-angola">MAR</div>
+                <div class="flag flag-kenya">KEN</div>
             </div>
             
             <div class="details-grid">
                 <div class="detail-card">
                     <div class="detail-icon">📅</div>
                     <div class="detail-label">Date & Time</div>
-                    <div class="detail-value">10 August 2025</div>
-                    <div class="detail-value">12:00 PM</div>
+                    <div class="detail-value">17 August 2025</div>
+                    <div class="detail-value">3:00 PM</div>
                 </div>
                 
                 <div class="detail-card">
@@ -616,8 +608,8 @@
                 
                 <div class="detail-card">
                     <div class="detail-icon">🎫</div>
-                    <div class="detail-label">Order</div>
-                    <div class="detail-value">#T7PGM8SS</div>
+                    <div class="detail-label">Ticket Number</div>
+                    <div class="detail-value">#B6B7C955</div>
                 </div>
             </div>
         </div>
@@ -629,7 +621,7 @@
                 <button id="download-btn" class="btn btn-primary">
                     <span>⬇️</span> Download Tickets
                 </button>
-                <button class="btn btn-secondary">
+                <button id="calendar-btn" class="btn btn-secondary">
                     <span>📅</span> Add to Calendar
                 </button>
             </div>
@@ -706,14 +698,14 @@
     <!-- Hidden ticket template for PDF generation -->
     <div id="ticket-template">
         <div class="ticket-header">
-            <div class="ticket-title">Kenya Vs Morocco</div>
+            <div class="ticket-title">Zambia Vs Kenya</div>
             <div class="ticket-subtitle">International Friendly Match</div>
         </div>
         
         <div class="ticket-body">
             <div class="ticket-row">
                 <div class="ticket-label">Match</div>
-                <div class="ticket-value">Kenya Vs Morocco</div>
+                <div class="ticket-value">Zambia Vs Kenya</div>
             </div>
             
             <div class="ticket-row">
@@ -738,7 +730,7 @@
             
             <div class="ticket-row">
                 <div class="ticket-label">Gates open</div>
-                <div class="ticket-value">August 10</div>
+                <div class="ticket-value">12pm</div>
             </div>
             
             <div class="ticket-row">
@@ -747,8 +739,13 @@
             </div>
             
             <div class="ticket-row">
-                <div class="ticket-label">Gate 4</div>
-                <div class="ticket-value">Section 7-Middle</div>
+                <div class="ticket-label">Gate</div>
+                <div class="ticket-value">4</div>
+            </div>
+            
+            <div class="ticket-row">
+                <div class="ticket-label">Section</div>
+                <div class="ticket-value">13-Middle</div>
             </div>
             
             <div class="ticket-qr" id="qr-code"></div>
@@ -758,56 +755,68 @@
             This ticket is valid for one person only. Please bring ID for verification.
         </div>
     </div>
-    
+
     <script>
         // Initialize jsPDF
         const { jsPDF } = window.jspdf;
         
-        // Generate QR code
-        const qrCodeElement = document.getElementById('qr-code');
-        const qrCode = new QRCode(qrCodeElement, {
-            text: "TICKET#B6B7C955\nKenya Vs Morocco\nMoi International Sports Centre\nGate 2\nTeam Kenya\nAttendee: Team Kenya\nDate: 10 August 2025\nTime: 3pm",
-            width: 128,
-            height: 128,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
+        // Generate QR code for the ticket
+        function generateQRCode() {
+            const qrCodeElement = document.getElementById('qr-code');
+            qrCodeElement.innerHTML = '';
+            
+            const qrCode = new QRCode(qrCodeElement, {
+                text: "TICKET#B6B7C955\nZambia Vs Kenya\nMoi International Sports Centre\nGate 4\nSection 13-Middle\nAttendee: Team Kenya\nDate: 17 August 2025\nTime: 3pm",
+                width: 128,
+                height: 128,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
         
+        // Download ticket as PDF
         document.getElementById('download-btn').addEventListener('click', function() {
+            // Generate QR code
+            generateQRCode();
+            
             // Show download notification
             const notice = document.getElementById('downloadNotice');
             notice.classList.add('show');
             
-            // Capture the ticket template
-            html2canvas(document.getElementById('ticket-template'), {
-                scale: 2,
-                backgroundColor: null
-            }).then(canvas => {
-                // Create PDF
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPDF('p', 'mm', [100, 150]); // Custom ticket size
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = pdf.internal.pageSize.getHeight();
-                
-                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                
-                // Download the PDF
-                pdf.save('Kenya-Morocco-Ticket.pdf');
-                
-                // Hide notification after a delay
-                setTimeout(() => {
-                    notice.classList.remove('show');
-                }, 3000);
-            });
+            // Wait a moment for QR code to render
+            setTimeout(() => {
+                // Capture the ticket template
+                html2canvas(document.getElementById('ticket-template'), {
+                    scale: 2,
+                    backgroundColor: null
+                }).then(canvas => {
+                    // Create PDF
+                    const imgData = canvas.toDataURL('image/png');
+                    const pdf = new jsPDF('p', 'mm', [100, 150]); // Custom ticket size
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+                    
+                    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                    
+                    // Download the PDF
+                    pdf.save('Zambia-Kenya-Ticket.pdf');
+                    
+                    // Hide notification after a delay
+                    setTimeout(() => {
+                        notice.classList.remove('show');
+                    }, 3000);
+                });
+            }, 500);
         });
         
         // Add to Calendar button functionality
-        document.querySelector('.btn-secondary').addEventListener('click', function() {
+        document.getElementById('calendar-btn').addEventListener('click', function() {
             alert('Event added to your calendar successfully!');
         });
+        
+        // Generate initial QR code when page loads
+        window.addEventListener('load', generateQRCode);
     </script>
-</body>
-</html>
 </body>
 </html>
