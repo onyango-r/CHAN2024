@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Match Ticket Download</title>
+    <title>CAF Official Ticket - Kenya vs Madagascar</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -16,7 +16,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background: linear-gradient(135deg, #0d3c61, #1a6fb0, #0d3c61);
             min-height: 100vh;
             padding: 20px;
             display: flex;
@@ -30,7 +30,7 @@
             max-width: 800px;
             width: 100%;
             background: white;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
             margin: 20px;
@@ -40,9 +40,26 @@
             background: linear-gradient(120deg, #006600, #009900);
             color: white;
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 20px;
             position: relative;
             overflow: hidden;
+        }
+        
+        .caf-logo {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: #F4C430;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            border: 3px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
         
         .confirmation-title {
@@ -55,12 +72,12 @@
         .subtitle {
             font-size: 20px;
             opacity: 0.9;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         
         .email-notice {
             background: rgba(255,255,255,0.2);
-            padding: 12px 20px;
+            padding: 10px 20px;
             border-radius: 50px;
             font-size: 16px;
             display: inline-block;
@@ -69,9 +86,10 @@
         }
         
         .event-info {
-            padding: 30px;
+            padding: 25px;
             text-align: center;
             background: white;
+            position: relative;
         }
         
         .sports-label {
@@ -82,15 +100,15 @@
             font-size: 16px;
             font-weight: 600;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 1px solid #c5e1d4;
         }
         
         .match-title {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 800;
             margin: 15px 0;
-            background: linear-gradient(90deg, #1a2a6c, #b21f1f);
+            background: linear-gradient(90deg, #006600, #009900);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -115,14 +133,14 @@
             font-weight: bold;
         }
         
-        .flag-zambia {
-            background: linear-gradient(to bottom, #198a00 33%, #f7d618 33%, #f7d618 66%, #de2010 66%);
-            color: #1a2a6c;
-        }
-        
         .flag-kenya {
             background: linear-gradient(to bottom, #000000 33%, #ff0000 33%, #ff0000 66%, #006600 66%);
             color: #ffffff;
+        }
+        
+        .flag-madagascar {
+            background: linear-gradient(to right, #fc3e32 33%, #007e3a 33%, #007e3a 66%, #ffffff 66%);
+            color: #000000;
         }
         
         .vs {
@@ -136,14 +154,14 @@
         .details-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin: 40px 0 30px;
+            gap: 20px;
+            margin: 30px 0 20px;
         }
         
         .detail-card {
             background: #f8fafc;
             border-radius: 12px;
-            padding: 25px 20px;
+            padding: 20px 15px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             border: 1px solid #eaeaea;
@@ -157,7 +175,7 @@
         
         .detail-icon {
             font-size: 28px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #1a56db;
         }
         
@@ -175,7 +193,7 @@
         }
         
         .ticket-section {
-            padding: 30px;
+            padding: 25px;
             background: linear-gradient(to right, #f9fbfd, #f0f5ff);
             position: relative;
             overflow: hidden;
@@ -184,7 +202,7 @@
         .section-title {
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: #1a2a6c;
             text-align: center;
             position: relative;
@@ -203,7 +221,7 @@
         .actions {
             display: flex;
             gap: 20px;
-            margin: 40px 0 20px;
+            margin: 30px 0 15px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -212,7 +230,7 @@
             flex: 1;
             min-width: 220px;
             text-align: center;
-            padding: 18px;
+            padding: 16px;
             border-radius: 12px;
             font-weight: 700;
             text-decoration: none;
@@ -227,21 +245,21 @@
         }
         
         .btn-primary {
-            background: linear-gradient(45deg, #1a56db, #0d47a1);
+            background: linear-gradient(45deg, #006600, #009900);
             color: white;
-            box-shadow: 0 5px 15px rgba(26, 86, 219, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 102, 0, 0.3);
         }
         
         .btn-secondary {
             background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-            color: #1a56db;
-            border: 2px solid #1a56db;
+            color: #006600;
+            border: 2px solid #006600;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(26, 86, 219, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 102, 0, 0.4);
         }
         
         .btn-secondary:hover {
@@ -249,7 +267,7 @@
         }
         
         .payment-section {
-            padding: 30px;
+            padding: 25px;
             background: white;
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
@@ -258,7 +276,7 @@
         .payment-details {
             background: #f0fdf4;
             border-radius: 16px;
-            padding: 25px;
+            padding: 20px;
             max-width: 500px;
             margin: 0 auto;
             border: 1px solid #dcfce7;
@@ -267,8 +285,8 @@
         .payment-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
             border-bottom: 1px dashed #e2e8f0;
             font-size: 18px;
         }
@@ -290,7 +308,7 @@
         }
         
         .help-section {
-            padding: 40px 30px;
+            padding: 30px 25px;
             background: linear-gradient(to bottom, #f0f5ff, #e6eeff);
             text-align: center;
             position: relative;
@@ -298,14 +316,14 @@
         
         .help-title {
             font-size: 24px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: #1a2a6c;
             font-weight: 700;
         }
         
         .help-text {
             font-size: 18px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -316,7 +334,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin: 30px 0;
+            margin: 25px 0;
             flex-wrap: wrap;
         }
         
@@ -324,7 +342,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 16px 30px;
+            padding: 14px 25px;
             border-radius: 12px;
             background: white;
             text-decoration: none;
@@ -339,22 +357,22 @@
         .contact-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-            background: #1a56db;
+            background: #006600;
             color: white;
         }
         
         .contact-info {
-            margin-top: 30px;
+            margin-top: 25px;
             font-size: 17px;
             background: rgba(255,255,255,0.7);
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             display: inline-block;
             border: 1px solid #e2e8f0;
         }
         
         .contact-link {
-            color: #1a56db;
+            color: #006600;
             text-decoration: none;
             font-weight: 700;
         }
@@ -362,7 +380,7 @@
         footer {
             background: #0f172a;
             color: white;
-            padding: 50px 30px 30px;
+            padding: 40px 25px 25px;
             text-align: center;
         }
         
@@ -374,7 +392,7 @@
         .logo {
             font-size: 32px;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #fdbb2d;
             letter-spacing: 1px;
         }
@@ -384,41 +402,41 @@
         }
         
         .contact-details {
-            margin: 25px 0;
+            margin: 20px 0;
             line-height: 1.8;
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin: 30px 0;
+            gap: 20px;
+            margin: 25px 0;
         }
         
         .social-link {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background: rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px;
+            font-size: 18px;
             text-decoration: none;
             transition: all 0.3s ease;
         }
         
         .social-link:hover {
             transform: translateY(-5px);
-            background: #1a56db;
+            background: #006600;
         }
         
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin: 30px 0;
+            gap: 20px;
+            margin: 25px 0;
             flex-wrap: wrap;
         }
         
@@ -434,10 +452,10 @@
         }
         
         .copyright {
-            margin-top: 35px;
+            margin-top: 30px;
             color: #94a3b8;
             font-size: 16px;
-            padding-top: 25px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         
@@ -463,46 +481,78 @@
             opacity: 1;
         }
         
-        /* Hidden ticket for PDF generation */
+        /* Enhanced ticket for PDF generation */
         #ticket-template {
             position: absolute;
             left: -9999px;
             top: -9999px;
             width: 400px;
             background: white;
-            border-radius: 12px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border: 1px solid #eaeaea;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 2px solid #eaeaea;
         }
         
         .ticket-header {
-            background: linear-gradient(90deg, #1a2a6c, #b21f1f);
+            background: linear-gradient(90deg, #006600, #009900);
             color: white;
             padding: 15px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ticket-caf-logo {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
+            background: #F4C430;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 8px rgba(0,0,0,0.3);
         }
         
         .ticket-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             margin-bottom: 5px;
         }
         
         .ticket-subtitle {
-            font-size: 16px;
+            font-size: 14px;
             opacity: 0.9;
+        }
+        
+        .ticket-security {
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 10px;
+            opacity: 0.7;
         }
         
         .ticket-body {
             padding: 20px;
+            background: #f9f9f9;
+            position: relative;
         }
         
         .ticket-row {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px dashed #e0e0e0;
+            padding: 10px 0;
+            border-bottom: 1px dashed #ccc;
+            font-size: 14px;
         }
         
         .ticket-label {
@@ -515,24 +565,65 @@
             font-weight: 600;
             text-align: right;
             width: 60%;
+            color: #006600;
         }
         
         .ticket-qr {
             display: flex;
             justify-content: center;
             margin: 20px 0;
-            padding: 10px;
-            background: #f5f5f5;
+            padding: 15px;
+            background: #fff;
             border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ticket-barcode {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .barcode {
+            font-family: 'Libre Barcode 128', cursive;
+            font-size: 40px;
+            letter-spacing: 5px;
+            color: #000;
         }
         
         .ticket-footer {
-            background: #f8f8f8;
-            padding: 15px;
+            background: #f0f0f0;
+            padding: 12px;
             text-align: center;
-            border-top: 1px solid #e0e0e0;
-            font-size: 12px;
-            color: #777;
+            border-top: 1px solid #ddd;
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .ticket-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            opacity: 0.05;
+            color: #006600;
+            pointer-events: none;
+            font-weight: bold;
+            z-index: 0;
+        }
+        
+        .ticket-hologram {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%),
+                        linear-gradient(45deg, rgba(255,0,0,0.2) 0%, rgba(0,255,0,0.2) 50%, rgba(0,0,255,0.2) 100%);
+            border-radius: 50%;
+            opacity: 0.7;
         }
         
         @media (max-width: 600px) {
@@ -571,55 +662,66 @@
             #ticket-template {
                 width: 300px;
             }
+            
+            .ticket-title {
+                font-size: 20px;
+            }
+            
+            .ticket-row {
+                font-size: 12px;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+128&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <div class="caf-logo">CAF</div>
             <h1 class="confirmation-title">Tickets Confirmed!</h1>
-            <p class="subtitle">You're all set for Zambia Vs Kenya</p>
-            <p class="email-notice">A confirmation has been sent</p>
+            <p class="subtitle">You're all set for Kenya Vs Madagascar</p>
+            <p class="email-notice">A confirmation has been sent to your email</p>
         </div>
         
         <div class="event-info">
-            <span class="sports-label">SPORTS</span>
-            <h2 class="match-title">Zambia Vs Kenya</h2>
+            <span class="sports-label">CAF INTERNATIONAL FRIENDLY</span>
+            <h2 class="match-title">Kenya Vs Madagascar</h2>
             
             <div class="flags">
-                <div class="flag flag-zambia">ZAM</div>
-                <div class="vs">VS</div>
                 <div class="flag flag-kenya">KEN</div>
+                <div class="vs">VS</div>
+                <div class="flag flag-madagascar">MAD</div>
             </div>
             
             <div class="details-grid">
                 <div class="detail-card">
                     <div class="detail-icon">📅</div>
                     <div class="detail-label">Date & Time</div>
-                    <div class="detail-value">17 August 2025</div>
-                    <div class="detail-value">3:00 PM</div>
+                    <div class="detail-value">22 August 2025</div>
+                    <div class="detail-value">5:00 PM EAT</div>
                 </div>
                 
                 <div class="detail-card">
                     <div class="detail-icon">📍</div>
-                    <div class="detail-label">Location</div>
+                    <div class="detail-label">Venue</div>
                     <div class="detail-value">Moi International Sports Centre</div>
+                    <div class="detail-value">Nairobi, Kenya</div>
                 </div>
                 
                 <div class="detail-card">
                     <div class="detail-icon">🎫</div>
-                    <div class="detail-label">Ticket Number</div>
-                    <div class="detail-value">#B6B7C955</div>
+                    <div class="detail-label">Ticket Reference</div>
+                    <div class="detail-value">#MAD2025K</div>
                 </div>
             </div>
         </div>
         
         <div class="ticket-section">
-            <h3 class="section-title">Your Ticket</h3>
+            <h3 class="section-title">Your Official Match Ticket</h3>
             
             <div class="actions">
                 <button id="download-btn" class="btn btn-primary">
-                    <span>⬇️</span> Download Tickets
+                    <span>⬇️</span> Download Ticket
                 </button>
                 <button id="calendar-btn" class="btn btn-secondary">
                     <span>📅</span> Add to Calendar
@@ -633,45 +735,60 @@
             <div class="payment-details">
                 <div class="payment-row">
                     <div class="payment-label">Payment Method</div>
-                    <div class="payment-value">via M-Pesa</div>
+                    <div class="payment-value">M-Pesa Mobile Money</div>
+                </div>
+                
+                <div class="payment-row">
+                    <div class="payment-label">Transaction ID</div>
+                    <div class="payment-value">MP123456789</div>
                 </div>
                 
                 <div class="payment-row">
                     <div class="payment-label">Total Amount</div>
-                    <div class="payment-value">Ksh 200</div>
+                    <div class="payment-value">Ksh 250.00</div>
+                </div>
+                
+                <div class="payment-row">
+                    <div class="payment-label">Payment Status</div>
+                    <div class="payment-value" style="color:#009900;">Confirmed</div>
                 </div>
             </div>
         </div>
         
         <div class="help-section">
-            <h3 class="help-title">Need Help?</h3>
-            <p class="help-text">Our support team is here to help with any questions about your order.</p>
+            <h3 class="help-title">Need Assistance?</h3>
+            <p class="help-text">Our ticketing support team is available to help with any questions about your order.</p>
             
             <div class="contact-methods">
-                <a href="mailto:hello@mookh.africa" class="contact-btn">
+                <a href="mailto:support@caf-tickets.africa" class="contact-btn">
                     <span>✉️</span> Email Support
                 </a>
                 
                 <a href="https://wa.me/254798984828" class="contact-btn">
-                    <span>💬</span> WhatsApp Chat
+                    <span>💬</span> WhatsApp Support
+                </a>
+                
+                <a href="tel:+254798984828" class="contact-btn">
+                    <span>📞</span> Call Support
                 </a>
             </div>
             
             <div class="contact-info">
-                <p>Having trouble with your order? Contact our support team at 
-                    <a href="mailto:hello@mookh.africa" class="contact-link">hello@mookh.africa</a> 
-                    or WhatsApp 
-                    <a href="https://wa.me/254798984828" class="contact-link">+254 798 984828</a>
+                <p>Official CAF Ticketing Support: 
+                    <a href="mailto:support@caf-tickets.africa" class="contact-link">support@caf-tickets.africa</a> 
+                    or 
+                    <a href="tel:+254798984828" class="contact-link">+254 798 984828</a>
                 </p>
             </div>
         </div>
         
         <footer>
             <div class="footer-content">
-                <div class="logo">MOO<span>KH</span></div>
+                <div class="logo">CAF TICKETS</div>
                 
                 <div class="contact-details">
-                    <p><a href="mailto:hello@mookh.africa" class="contact-link">hello@mookh.africa</a></p>
+                    <p>Confederation of African Football Official Ticketing</p>
+                    <p><a href="mailto:support@caf-tickets.africa" class="contact-link">support@caf-tickets.africa</a></p>
                     <p><a href="tel:+254798984828" class="contact-link">+254 798 984828</a></p>
                 </div>
                 
@@ -679,14 +796,17 @@
                     <a href="#" class="social-link">📱</a>
                     <a href="#" class="social-link">📘</a>
                     <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📸</a>
                 </div>
                 
                 <div class="footer-links">
                     <a href="#" class="footer-link">Privacy Policy</a>
                     <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Ticket FAQs</a>
+                    <a href="#" class="footer-link">Refund Policy</a>
                 </div>
                 
-                <p class="copyright">© 2025 Mookh. All rights reserved. Powered by Mookh</p>
+                <p class="copyright">© 2025 Confederation of African Football. All rights reserved. Official Ticketing Partner</p>
             </div>
         </footer>
     </div>
@@ -695,22 +815,27 @@
         <span>✅</span> Your ticket is downloading...
     </div>
     
-    <!-- Hidden ticket template for PDF generation -->
+    <!-- Enhanced ticket template for PDF generation -->
     <div id="ticket-template">
         <div class="ticket-header">
-            <div class="ticket-title">Zambia Vs Kenya</div>
-            <div class="ticket-subtitle">International Friendly Match</div>
+            <div class="ticket-caf-logo">CAF</div>
+            <div class="ticket-title">Kenya Vs Madagascar</div>
+            <div class="ticket-subtitle">CAF International Friendly Match</div>
+            <div class="ticket-security">OFFICIAL TICKET • DO NOT DUPLICATE</div>
         </div>
         
         <div class="ticket-body">
+            <div class="ticket-watermark">CAF TICKET</div>
+            <div class="ticket-hologram"></div>
+            
             <div class="ticket-row">
                 <div class="ticket-label">Match</div>
-                <div class="ticket-value">Zambia Vs Kenya</div>
+                <div class="ticket-value">Kenya Vs Madagascar</div>
             </div>
             
             <div class="ticket-row">
-                <div class="ticket-label">Kick-off</div>
-                <div class="ticket-value">3pm</div>
+                <div class="ticket-label">Date & Time</div>
+                <div class="ticket-value">22 Aug 2025, 5:00 PM EAT</div>
             </div>
             
             <div class="ticket-row">
@@ -720,39 +845,39 @@
             
             <div class="ticket-row">
                 <div class="ticket-label">Ticket Type</div>
-                <div class="ticket-value">Team Kenya</div>
+                <div class="ticket-value">General Admission</div>
             </div>
             
             <div class="ticket-row">
-                <div class="ticket-label">Ticket No.</div>
-                <div class="ticket-value">#B6B7C955</div>
+                <div class="ticket-label">Ticket Ref.</div>
+                <div class="ticket-value">#MAD2025K</div>
             </div>
             
             <div class="ticket-row">
-                <div class="ticket-label">Gates open</div>
-                <div class="ticket-value">12pm</div>
+                <div class="ticket-label">Gate Opening</div>
+                <div class="ticket-value">12:00 PM (3 hours before kickoff)</div>
             </div>
             
             <div class="ticket-row">
-                <div class="ticket-label">Attendee</div>
-                <div class="ticket-value">Team Kenya</div>
+                <div class="ticket-label">Gate & Section</div>
+                <div class="ticket-value">Gate 4, Section 13-Middle</div>
             </div>
             
             <div class="ticket-row">
-                <div class="ticket-label">Gate</div>
-                <div class="ticket-value">4</div>
-            </div>
-            
-            <div class="ticket-row">
-                <div class="ticket-label">Section</div>
-                <div class="ticket-value">13-Middle</div>
+                <div class="ticket-label">Seat</div>
+                <div class="ticket-value">Row 12, Seat 45</div>
             </div>
             
             <div class="ticket-qr" id="qr-code"></div>
+            
+            <div class="ticket-barcode">
+                <div class="barcode">*MAD2025K*</div>
+            </div>
         </div>
         
         <div class="ticket-footer">
-            This ticket is valid for one person only. Please bring ID for verification.
+            <p>This ticket is valid for one person only. Please bring valid ID for verification.</p>
+            <p>No re-entry permitted. Terms and conditions apply.</p>
         </div>
     </div>
 
@@ -765,8 +890,9 @@
             const qrCodeElement = document.getElementById('qr-code');
             qrCodeElement.innerHTML = '';
             
+            // Updated QR code data for Kenya vs Madagascar
             const qrCode = new QRCode(qrCodeElement, {
-                text: "TICKET#B6B7C955\nZambia Vs Kenya\nMoi International Sports Centre\nGate 4\nSection 13-Middle\nAttendee: Team Kenya\nDate: 17 August 2025\nTime: 3pm",
+                text: "CAF TICKET#MAD2025K\nKenya Vs Madagascar\n22 Aug 2025, 5:00 PM\nMoi International Sports Centre\nGate 4, Section 13-Middle\nRow 12, Seat 45\nGeneral Admission",
                 width: 128,
                 height: 128,
                 colorDark: "#000000",
@@ -789,7 +915,8 @@
                 // Capture the ticket template
                 html2canvas(document.getElementById('ticket-template'), {
                     scale: 2,
-                    backgroundColor: null
+                    backgroundColor: null,
+                    useCORS: true
                 }).then(canvas => {
                     // Create PDF
                     const imgData = canvas.toDataURL('image/png');
@@ -800,7 +927,7 @@
                     pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
                     
                     // Download the PDF
-                    pdf.save('Zambia-Kenya-Ticket.pdf');
+                    pdf.save('CAF-Ticket-Kenya-Madagascar.pdf');
                     
                     // Hide notification after a delay
                     setTimeout(() => {
